@@ -214,7 +214,7 @@
         
         // Get AI response JSON from n8n
         const data = await response.json();
-        const aiReply = await response.text();
+        const aiReply = data?.choices?.[0]?.message?.content || JSON.stringify(data);
         
         // Hide typing indicator and show response
         typingIndicator.style.display = 'none';
