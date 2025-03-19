@@ -212,10 +212,9 @@
           body: JSON.stringify({ message: userMessage })
         });
         
-        // Get AI response JSON from n8n
-        const data = await response.json();
-        const aiReply = data?.choices?.[0]?.message?.content || JSON.stringify(data);
-        
+        // Get AI response text from n8n
+        const aiReply = await response.text();
+
         // Hide typing indicator and show response
         typingIndicator.style.display = 'none';
         addMessage('ai', aiReply);
